@@ -1,5 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
 
 // NORMAL APPROACH -->
 // TC -> O(n*(2^n));

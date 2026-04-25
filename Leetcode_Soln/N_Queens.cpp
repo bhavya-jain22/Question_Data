@@ -1,7 +1,3 @@
-#include<vector>
-#include<string>
-#include<unordered_map>
-using namespace std;
 
 class Solution {
     unordered_map<int,bool>cols,left,right;
