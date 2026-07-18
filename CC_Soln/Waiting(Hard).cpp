@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// const int N = 1e5 + 10;
-// int a[N];
 
 int main() {
     
@@ -23,6 +21,7 @@ int main() {
         }
         
         mx = 1;
+        // Remember the complexity here will be O(n) and not O(n^2)
         for(int i=0; i<n; i++) {
             long long change = wait[i], curr_max = mx;
             if(a[i] > mx) {
