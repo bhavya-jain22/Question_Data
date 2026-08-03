@@ -1,3 +1,6 @@
+
+// https://leetcode.com/problems/predict-the-winner/
+
 class Solution {
     private:
     int utils(vector<vector<int>>& dp, vector<int>& nums, int l, int r) {
@@ -21,3 +24,25 @@ public:
         return mx>=sum-mx;
     }
 };
+
+
+// OR --->
+
+
+// class Solution {
+//     private:
+//     int utils(vector<vector<int>>& dp, vector<int>& nums, int l, int r) {
+//         if(l>r) return 0;
+//         if(dp[l][r] != -1) return dp[l][r];
+//         int take_l = nums[l] - utils(dp, nums, l+1, r);
+//         int take_r = nums[r] - utils(dp, nums, l, r-1);
+//         return dp[l][r] = max(take_l, take_r);
+//     }
+// public:
+//     bool predictTheWinner(vector<int>& nums) {
+//         int n = nums.size();
+//         vector<vector<int>> dp(n, vector<int>(n, -1));
+//         int mx = utils(dp, nums, 0, n-1);
+//         return mx>=0? true: false;
+//     }
+// };
