@@ -18,6 +18,34 @@ int utils(vector<vector<int>>& dp, vector<int>& v, int n, int target) {
     return dp[n][target] = add + sub;  
 }
 
+int tabulation(vector<vector<int>>& dp, vector<int>& v, int n, int target) {
+    int add = 0, sub = 0;
+    for(int i=0; i<=n; i++) {
+        for(int j=0; j<=2000; j++) {
+            if(i==0 && j==1000) {
+                dp[i][j] = 1;
+                continue;
+            }
+
+            if(i==0) {
+                dp[i][j] = 0;
+                continue;
+            }
+
+            add = sub = 0;
+            if(j + v[i-1] <= 2000) {
+                add = dp[i-1][j+v[i-1]];
+            }
+            if(v[i-1] <= j) {
+                sub = dp[i-1][j-v[i-1]];
+            }
+            
+            dp[i][j] = add + sub;            
+        }
+    }
+    return dp[n][target];
+}
+
 public:
     int findTargetSumWays(vector<int>& nums, int target) {
         n = nums.size();
@@ -28,7 +56,9 @@ public:
         dp.resize(n+1, vector<int>(2001, -1));
 
         // also pass the target as target + max(negative).
-        int ans = utils(dp, nums, n, 1000+target);
+        
+        // int ans = utils(dp, nums, n, 1000+target);
+        int ans = tabulation(dp, nums, n, 1000+target);
         return ans;
     }
 };
