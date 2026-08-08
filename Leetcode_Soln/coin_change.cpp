@@ -10,6 +10,7 @@ int utils(vector<vector<int>>& dp, vector<int>& coins, int n, int amount) {
     if(n==0) return -3;
     if(dp[n][amount] != -1) return dp[n][amount];
     if(coins[n-1] <= amount) {
+        // take the coin, but don't decrease n (coin can be taken again)
         int take = 1 + utils(dp, coins, n, amount-coins[n-1]);
         int not_take = utils(dp, coins, n-1, amount);
         if(take > 0 && not_take>0) {
