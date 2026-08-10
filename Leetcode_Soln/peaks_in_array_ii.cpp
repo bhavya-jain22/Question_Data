@@ -72,7 +72,7 @@ void reconcile(int pos) {
         auto L_it = prev(R_it);
         int R = *R_it, L = *L_it;
         s.insert(pos);
-        if (pos+1 <= R) updateRange(0, n-1, pos+1, R, 0, pos - L);
+        updateRange(0, n-1, pos+1, R, 0, pos - L);
     } else {
         // removal: find neighbors in s while pos is still a member
         auto it = s.find(pos);
@@ -80,7 +80,7 @@ void reconcile(int pos) {
         auto L_it = prev(it);
         int R = *R_it, L = *L_it;
         s.erase(it);
-        if (pos+1 <= R) updateRange(0, n-1, pos+1, R, 0, L - pos);
+        updateRange(0, n-1, pos+1, R, 0, L - pos);
     }
 }
 
