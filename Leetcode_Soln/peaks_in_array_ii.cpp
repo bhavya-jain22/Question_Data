@@ -117,8 +117,8 @@ public:
                 long long lb = *lb_it;
                 long long a = 0;
                 if (lb <= r) {
-                    long long sumFull   = query(0, n-1, 0, r, 0);        // sum p(j), j=0..r
-                    long long sumUpToLb = query(0, n-1, 0, (int)lb, 0);  // sum p(j), j=0..lb
+                    long long sumFull   = query(0, n-1, 0, r, 0);
+                    long long sumUpToLb = query(0, n-1, 0, (int)lb, 0);
                     a = (sumFull - sumUpToLb) - l * (r - lb);
                 }
                 if (a < 0) a = 0;
